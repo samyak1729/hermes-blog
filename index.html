@@ -65,18 +65,37 @@
             background: none;
             padding: 0;
         }
+        .prose img {
+            max-width: 100%;
+            height: auto;
+        }
+        @media (max-width: 640px) {
+            .serif-heading {
+                font-size: 1.875rem;
+            }
+            h2 {
+                font-size: 1.5rem !important;
+            }
+            h3 {
+                font-size: 1.25rem !important;
+            }
+            .prose p {
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center">
 
-    <main class="flex-1 w-full max-w-3xl mx-auto px-6 pt-16 pb-20">
+    <main class="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 pt-12 sm:pt-16 pb-16 sm:pb-20">
         
         <article>
             <header class="mb-16 text-center">
                 <div class="mb-6 px-4 py-1 border border-gray-100 bg-gray-50 rounded-full text-[10px] tracking-[0.2em] text-gray-400 uppercase font-semibold inline-block">
                     Article
                 </div>
-                <h1 class="serif-heading text-4xl md:text-5xl lg:text-6xl text-gray-800 leading-tight mb-6">
+                <h1 class="serif-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-gray-800 leading-tight mb-6">
                     Understanding Hermes
                 </h1>
                 <div class="flex items-center justify-center gap-4 text-sm text-gray-400">
@@ -87,7 +106,7 @@
             </header>
 
             <div class="prose prose-lg mx-auto">
-                <h2 class="text-3xl text-gray-800 mt-12 mb-6">1. Introduction</h2>
+                <h2 class="text-2xl sm:text-3xl text-gray-800 mt-10 sm:mt-12 mb-4 sm:mb-6">1. Introduction</h2>
                 <p class="mb-6">
                     Anyone who has spent time experimenting with autonomous agents eventually runs into the same frustration: they forget more than they should.
                 </p>
@@ -110,7 +129,7 @@
                 </p>
 
 
-                <h2 class="text-3xl text-gray-800 mt-12 mb-6">2. A Bird's-Eye View</h2>
+                <h2 class="text-2xl sm:text-3xl text-gray-800 mt-10 sm:mt-12 mb-4 sm:mb-6">2. A Bird's-Eye View</h2>
                 <p class="mb-6">
                     If an agent is expected to remember and learn in a human-like way, it must manage three different kinds of information.
                 </p>
@@ -127,12 +146,12 @@
                     Hermes addresses these needs through a layered architecture composed of three memory systems.
                 </p>
 
-                <h2 class="text-3xl text-gray-800 mt-12 mb-6">3. The Three Layers of Memory</h2>
+                <h2 class="text-2xl sm:text-3xl text-gray-800 mt-10 sm:mt-12 mb-4 sm:mb-6">3. The Three Layers of Memory</h2>
                 <p class="mb-6">
                     Hermes' design mirrors the categories we just described. Each layer serving a different purpose and operating at a different time scale.
                 </p>
 
-                <h3 class="text-2xl text-gray-800 mt-10 mb-4">3.1 Working Memory</h3>
+                <h3 class="text-xl sm:text-2xl text-gray-800 mt-8 sm:mt-10 mb-3 sm:mb-4">3.1 Working Memory</h3>
                 <p class="mb-6">
                     Working memory represents the agent's awareness in its current session and the task that it is performing. Implementation is intentionally simple: an in-memory list. Every message that appears in the conversation from. system prompts to tool call results are appended to this in-memory list.
                 </p>
@@ -144,7 +163,7 @@
                     <img src="assets/Working memory digram.png" alt="Working Memory Diagram" class="w-full rounded-lg shadow-sm">
                 </figure>
 
-                <h3 class="text-2xl text-gray-800 mt-10 mb-4">3.2 Episodic Memory</h3>
+                <h3 class="text-xl sm:text-2xl text-gray-800 mt-8 sm:mt-10 mb-3 sm:mb-4">3.2 Episodic Memory</h3>
                 <p class="mb-6">
                     When a session ends its working memory disappears. Episodic memory exists to preserve it. Hermes stores session history in a local database using SQLite. On top of that Hermes also employs full-text search powered by FTS5.
                 </p>
@@ -168,7 +187,7 @@
                 </p>
 
 
-                <h3 class="text-2xl text-gray-800 mt-10 mb-4">3.3 Long-Term Memory</h3>
+                <h3 class="text-xl sm:text-2xl text-gray-800 mt-8 sm:mt-10 mb-3 sm:mb-4">3.3 Long-Term Memory</h3>
                 <p class="mb-6">
                     The outermost layer stores persistent knowledge. Instead of using a structured database schema, Hermes deliberately keeps this layer simple: plain Markdown files stored locally.
                 </p>
@@ -186,7 +205,7 @@
                     <img src="assets/Long Term Memory.png" alt="Long Term Memory" class="w-full rounded-lg shadow-sm">
                 </figure>
 
-                <h2 class="text-3xl text-gray-800 mt-12 mb-6">4. Memory Writing: How Agents Learn</h2>
+                <h2 class="text-2xl sm:text-3xl text-gray-800 mt-10 sm:mt-12 mb-4 sm:mb-6">4. Memory Writing: How Agents Learn</h2>
                 <p class="mb-6">
                     Humans rarely "decide" to learn something formally. Instead, we subconsciously make a note in our memory. To mimic this to some extent Hermes has employed 5 Triggers that determine when knowledge should be stored. This triggers are explained below
                 </p>
@@ -195,12 +214,12 @@
                     <img src="assets/Learning triggers.png" alt="Learning Triggers" class="w-full rounded-lg shadow-sm">
                 </figure>
 
-                <h3 class="text-2xl text-gray-800 mt-10 mb-4">Trigger 1: Direct Model Invocation</h3>
+                <h3 class="text-xl sm:text-2xl text-gray-800 mt-8 sm:mt-10 mb-3 sm:mb-4">Trigger 1: Direct Model Invocation</h3>
                 <p class="mb-6">
                     The simplest case occurs when the model itself decides that something is worth remembering. Hermes exposes a memory tool that allows the model to write entries into its persistent files. The model can add or replace information when it detects a pattern or learns a useful detail.
                 </p>
 
-                <h3 class="text-2xl text-gray-800 mt-10 mb-4">Trigger 2: Turn-Count Nudge</h3>
+                <h3 class="text-xl sm:text-2xl text-gray-800 mt-8 sm:mt-10 mb-3 sm:mb-4">Trigger 2: Turn-Count Nudge</h3>
                 <p class="mb-6">
                     Hermes also includes a passive learning mechanism.
                 </p>
@@ -208,7 +227,7 @@
                     After a certain number of user turns pass without any memory activity, a background thread prompts the agent to review the conversation and decide whether something should be stored. This often captures small but meaningful details such as user preferences.
                 </p>
 
-                <h3 class="text-2xl text-gray-800 mt-10 mb-4">Trigger 3: Iteration-Count Skill Nudge</h3>
+                <h3 class="text-xl sm:text-2xl text-gray-800 mt-8 sm:mt-10 mb-3 sm:mb-4">Trigger 3: Iteration-Count Skill Nudge</h3>
                 <p class="mb-6">
                     A parallel system exists for skills. Instead of counting user turns, Hermes tracks tool iterations. When the agent performs a substantial amount of tool-driven work without updating its skill library, another review is triggered.
                 </p>
@@ -224,7 +243,7 @@
                     If such a pattern exists, the agent converts it into a skill.
                 </p>
 
-                <h3 class="text-2xl text-gray-800 mt-10 mb-4">Trigger 4: Flush Before Context Compression</h3>
+                <h3 class="text-xl sm:text-2xl text-gray-800 mt-8 sm:mt-10 mb-3 sm:mb-4">Trigger 4: Flush Before Context Compression</h3>
                 <p class="mb-6">
                     Conversations eventually become too long to fit inside the model's context window. Before Hermes compresses older messages, it performs a synchronous memory flush. The agent reviews the conversation and extracts important knowledge that might otherwise be lost.
                 </p>
@@ -232,12 +251,12 @@
                     This is the only memory operation that intentionally pauses the conversation loop.
                 </p>
 
-                <h3 class="text-2xl text-gray-800 mt-10 mb-4">Trigger 5: Flush Before Session Exit</h3>
+                <h3 class="text-xl sm:text-2xl text-gray-800 mt-8 sm:mt-10 mb-3 sm:mb-4">Trigger 5: Flush Before Session Exit</h3>
                 <p class="mb-6">
                     A final safeguard occurs when a session ends. Whenever a command-line session resets or the gateway terminates an idle conversation, Hermes performs a final memory review using the full transcript. This guarantees that valuable information is not discarded simply because a session ended.
                 </p>
 
-                <h2 class="text-3xl text-gray-800 mt-12 mb-6">5. Context Compression: The Memory Compactor</h2>
+                <h2 class="text-2xl sm:text-3xl text-gray-800 mt-10 sm:mt-12 mb-4 sm:mb-6">5. Context Compression: The Memory Compactor</h2>
                 <p class="mb-6">
                     We know that all LLMs operate within a finite context window. As discussions grow longer, working memory begins to accumulate tool results, file reads, and exploratory reasoning that are no longer relevant. Without intervention, the context eventually exceeds the model's limits.
                 </p>
@@ -265,7 +284,7 @@
                     <img src="assets/Context Compression Logic.png" alt="Context Compression Logic" class="w-full rounded-lg shadow-sm">
                 </figure>
 
-                <h2 class="text-3xl text-gray-800 mt-12 mb-6">6. Session Search and Cross-Session Memory</h2>
+                <h2 class="text-2xl sm:text-3xl text-gray-800 mt-10 sm:mt-12 mb-4 sm:mb-6">6. Session Search and Cross-Session Memory</h2>
                 <p class="mb-6">
                     Stored sessions are only useful if they can be retrieved. Hermes solves this through a layered retrieval pipeline built around SQLite and FTS5.
                 </p>
@@ -274,18 +293,18 @@
                     <img src="assets/Session Search.png" alt="Session Search" class="w-full rounded-lg shadow-sm">
                 </figure>
 
-                <h3 class="text-2xl text-gray-800 mt-10 mb-4">6.1 Database Foundation</h3>
+                <h3 class="text-xl sm:text-2xl text-gray-800 mt-8 sm:mt-10 mb-3 sm:mb-4">6.1 Database Foundation</h3>
                 <p class="mb-6">
                     All messages are persisted in a local database at ~/.hermes/state.db. The FTS5 index tracks message content and remains synchronized with the base table through automatic triggers. This allows Hermes to perform fast full-text searches across the entire conversation history.
                 </p>
 
-                <h3 class="text-2xl text-gray-800 mt-10 mb-4">6.2 Query Sanitization</h3>
+                <h3 class="text-xl sm:text-2xl text-gray-800 mt-8 sm:mt-10 mb-3 sm:mb-4">6.2 Query Sanitization</h3>
                 <p class="mb-6">
                     FTS5 uses a specialized query syntax. Raw user input can easily produce malformed queries. Hermes therefore runs search requests through a sanitization pipeline that preserves quoted phrases while removing unsupported characters.
                 </p>
                 
 
-                <h3 class="text-2xl text-gray-800 mt-10 mb-4">6.3 Retrieval Pipeline</h3>
+                <h3 class="text-xl sm:text-2xl text-gray-800 mt-8 sm:mt-10 mb-3 sm:mb-4">6.3 Retrieval Pipeline</h3>
                 <p class="mb-6">
                     When the search tool runs, Hermes performs several steps:
                 </p>
@@ -300,22 +319,22 @@
                     If the search tool is called without a query, Hermes simply returns metadata for recent sessions.
                 </p>
 
-                <h3 class="text-2xl text-gray-800 mt-10 mb-4">6.4 Parent Session Resolution</h3>
+                <h3 class="text-xl sm:text-2xl text-gray-800 mt-8 sm:mt-10 mb-3 sm:mb-4">6.4 Parent Session Resolution</h3>
                 <p class="mb-6">
                     Delegated tasks often create child sessions that contain internal agent activity. Hermes walks the parent_session_id chain until it reaches the original root session. This ensures the retrieved context corresponds to the user-facing conversation rather than internal tool chatter.
                 </p>
 
-                <h3 class="text-2xl text-gray-800 mt-10 mb-4">6.5 Transcript Summarization</h3>
+                <h3 class="text-xl sm:text-2xl text-gray-800 mt-8 sm:mt-10 mb-3 sm:mb-4">6.5 Transcript Summarization</h3>
                 <p class="mb-6">
                     Session transcripts can exceed 100,000 characters. Instead of returning the full text, Hermes summarizes relevant segments using a lightweight model. The result is a concise recap that captures the essential insight without overwhelming the context window.
                 </p>
 
-                <h3 class="text-2xl text-gray-800 mt-10 mb-4">6.6 External Memory Providers</h3>
+                <h3 class="text-xl sm:text-2xl text-gray-800 mt-8 sm:mt-10 mb-3 sm:mb-4">6.6 External Memory Providers</h3>
                 <p class="mb-6">
                     Hermes also supports pluggable external memory systems. Backends such as RetainDB, OpenViking, and Honcho can be integrated to extend the memory layer beyond local storage.
                 </p>
 
-                <h2 class="text-3xl text-gray-800 mt-12 mb-6">7. Conclusion</h2>
+                <h2 class="text-2xl sm:text-3xl text-gray-800 mt-10 sm:mt-12 mb-4 sm:mb-6">7. Conclusion</h2>
                 <p class="mb-6">
                     Most agent discussions focus on models. Bigger models. Better reasoning. Longer context windows. But the real limitation of agents was all along a memory and orchestration problems..
                 </p>
