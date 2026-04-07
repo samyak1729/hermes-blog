@@ -5,15 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog | Quarq</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Times New Roman', Times, Georgia, serif;
             background-color: #ffffff;
             color: #1a1a1a;
         }
         .serif-heading {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Times New Roman', Times, Georgia, serif;
             letter-spacing: -0.02em;
         }
         .gradient-button {
@@ -32,7 +31,7 @@
             border-radius: 999px;
         }
         .prose h1, .prose h2, .prose h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Times New Roman', Times, Georgia, serif;
             letter-spacing: -0.02em;
         }
         .prose p {
@@ -105,27 +104,24 @@
                 <p class="mb-6">
                     Anyone who has spent time experimenting with autonomous agents eventually runs into the same frustration: they forget more than they should.
                 </p>
+
+            <figure class="my-8">
+                    <img src="assets/Understanding Hermes.png" alt="Understanding Hermes" class="w-full rounded-lg shadow-sm">
+            </figure>
+
                 <p class="mb-6">
                     Current agents are more like demos than reliable systems. They perform well in short, curated examples, but once placed under real constraints such as long tasks, repeated usage, or evolving environments they start repeating the same mistakes. The problem is not intelligence. The problem is remembering things, the problem is memory.
                 </p>
                 <p class="mb-6">
-                    The field is slowly recognizing this. Recent progress in agent design is less about making models "smarter" and more about giving them mechanisms to remember. A small example illustrates the gap.
+                    The field is slowly recognizing this. Recent progress in agent design is less about making models "smarter" and more about giving them mechanisms to remember.
                 </p>
                 <p class="mb-6">
-                    Last year I asked Google's Gemini CLI to deploy a FastAPI backend for me. The process took nearly forty-five minutes. The agent struggled through several deployment issues before eventually resolving them. A month later I attempted another deployment.
-                </p>
-                <p class="mb-6">
-                    The same problem appeared again this time. This time agent spent even more time debugging the same issue it had already solved once before. Eventually it succeeded, but the process was just as slow, if not more. A human programmer would have remembered the earlier mistake and fixed the problem in minutes.
-                </p>
-                <p class="mb-6">
-                    Humans accumulate experience. We remember errors, patterns, and solutions. Each attempt makes the next one easier. An agent that aims to be useful must do something similar.
-                </p>
-                <p class="mb-6">
-                    This is the motivation behind Hermes, an emerging open alternative to systems like OpenClaw. Hermes attempts to treat memory as a first-class component of the agent architecture. Instead of bolting learning on as an afterthought, it tries to embed memory into the core design.
+                    This is the motivation behind Hermes Agent by Nous Research, an emerging open alternative to systems like OpenClaw. Hermes attempts to treat memory as a first-class component of the agent architecture. Instead of bolting learning on as an afterthought, it tries to embed memory into the core design.
                 </p>
                 <p class="mb-6">
                     This essay explores how that system works.
                 </p>
+
 
                 <h2 class="text-3xl text-gray-800 mt-12 mb-6">2. A Bird's-Eye View</h2>
                 <p class="mb-6">
@@ -154,18 +150,9 @@
                     Working memory represents the agent's awareness in its current session and the task that it is performing. Implementation is intentionally simple: an in-memory list. Every message that appears in the conversation from. system prompts to tool call results are appended to this in-memory list.
                 </p>
                 <p class="mb-6">
-                    This same structure becomes the conversation history sent to the model API.
+                    This same structure becomes the conversation history sent to the model API. As long as the conversation continues, the list grows. Working memory therefore mirrors the exact sequence of events that occurred during the session.
                 </p>
-                <p class="mb-6">
-                    A typical progression looks like this:
-                </p>
-                <pre class="my-6"><code>Turn 1
-system prompt → user message → assistant response → tool result
-Turn 2
-system prompt → user message → assistant response → tool result → next user message → next assistant response → next tool result</code></pre>
-                <p class="mb-6">
-                    As long as the conversation continues, the list grows. Working memory therefore mirrors the exact sequence of events that occurred during the session.
-                </p>
+              
                 <figure class="my-8">
                     <img src="assets/Working memory digram.png" alt="Working Memory Diagram" class="w-full rounded-lg shadow-sm">
                 </figure>
@@ -342,6 +329,11 @@ system prompt → user message → assistant response → tool result → next u
                 <p class="mb-6">
                     Most agent discussions focus on models. Bigger models. Better reasoning. Longer context windows. But the real limitation of agents was all along a memory and orchestration problems..
                 </p>
+
+                <figure class="my-8">
+                    <img src="assets/final summary.png" alt="Architecture Summary" class="w-full rounded-lg shadow-sm">
+                </figure>
+
                 <p class="mb-6">
                     Hermes approached this problem from a different direction. Instead of treating memory as an optional feature, it treats memory as infrastructure.
                 </p>
@@ -362,9 +354,7 @@ system prompt → user message → assistant response → tool result → next u
                 <p class="mb-6">
                     This is still an early step. Hermes does not fully solve agent memory. The harder problems still remain unsolved, we still don't have our Jarvis but one day we might have one. And We all will be waiting for that.
                 </p>
-                <figure class="my-8">
-                    <img src="assets/final summary.png" alt="Architecture Summary" class="w-full rounded-lg shadow-sm">
-                </figure>
+                
             </div>
 
         </article>
