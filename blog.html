@@ -69,20 +69,7 @@
 </head>
 <body class="min-h-screen flex flex-col items-center">
 
-    <nav class="mt-8 px-6 py-2 nav-container flex items-center gap-12 shadow-sm fixed top-0 z-50">
-        <a href="#" class="flex items-center gap-2 font-bold text-xl">
-            <span class="text-2xl">Q</span>uarq
-        </a>
-        <div class="hidden md:flex gap-8 text-xs font-medium tracking-widest text-gray-500 uppercase">
-            <a href="#" class="hover:text-black">Blog</a>
-            <a href="#" class="hover:text-black">How it works</a>
-        </div>
-        <button class="gradient-button px-5 py-2 rounded-full text-sm font-medium">
-            Join Waitlist
-        </button>
-    </nav>
-
-    <main class="flex-1 w-full max-w-3xl mx-auto px-6 pt-32 pb-20">
+    <main class="flex-1 w-full max-w-3xl mx-auto px-6 pt-16 pb-20">
         
         <article>
             <header class="mb-16 text-center">
@@ -161,6 +148,11 @@
                 <p class="mb-6">
                     When a session ends its working memory disappears. Episodic memory exists to preserve it. Hermes stores session history in a local database using SQLite. On top of that Hermes also employs full-text search powered by FTS5.
                 </p>
+
+                <figure class="my-8">
+                    <img src="assets/Episodic memory diagram.png" alt="Episodic Memory Diagram" class="w-full rounded-lg shadow-sm">
+                </figure>
+
                 <p class="mb-6">
                     Every message, tool call, and token count is written to disk. But why use a database instead of simple files? The answer is simple: A database allows the agent to attach additional information to each session metadata such as timestamps, model configuration, and billing details. This wouldn't have been possible with a single markdown file. 
                 </p>
@@ -174,9 +166,7 @@
                 <p class="mb-6">
                     FTS5 indexes the message content, allowing the agent to search past interactions efficiently. This becomes important when the agent needs to recall relevant experience from previous sessions. Working of FTS5 is explained in further sections.
                 </p>
-                <figure class="my-8">
-                    <img src="assets/Episodic memory diagram.png" alt="Episodic Memory Diagram" class="w-full rounded-lg shadow-sm">
-                </figure>
+
 
                 <h3 class="text-2xl text-gray-800 mt-10 mb-4">3.3 Long-Term Memory</h3>
                 <p class="mb-6">
