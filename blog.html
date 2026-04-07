@@ -166,6 +166,9 @@ system prompt → user message → assistant response → tool result → next u
                 <p class="mb-6">
                     As long as the conversation continues, the list grows. Working memory therefore mirrors the exact sequence of events that occurred during the session.
                 </p>
+                <figure class="my-8">
+                    <img src="assets/Working memory digram.png" alt="Working Memory Diagram" class="w-full rounded-lg shadow-sm">
+                </figure>
 
                 <h3 class="text-2xl text-gray-800 mt-10 mb-4">3.2 Episodic Memory</h3>
                 <p class="mb-6">
@@ -184,6 +187,9 @@ system prompt → user message → assistant response → tool result → next u
                 <p class="mb-6">
                     FTS5 indexes the message content, allowing the agent to search past interactions efficiently. This becomes important when the agent needs to recall relevant experience from previous sessions. Working of FTS5 is explained in further sections.
                 </p>
+                <figure class="my-8">
+                    <img src="assets/Episodic memory diagram.png" alt="Episodic Memory Diagram" class="w-full rounded-lg shadow-sm">
+                </figure>
 
                 <h3 class="text-2xl text-gray-800 mt-10 mb-4">3.3 Long-Term Memory</h3>
                 <p class="mb-6">
@@ -199,11 +205,18 @@ system prompt → user message → assistant response → tool result → next u
                 <p class="mb-6">
                     Entries are separated by delimiters and stored as plain text. There is no strict schema. The agent can append, replace, or remove entries through its memory tool. The design is intentionally lightweight. Long-term memory behaves less like a database and more like a continuously evolving notebook.
                 </p>
+                <figure class="my-8">
+                    <img src="assets/Long Term Memory.png" alt="Long Term Memory" class="w-full rounded-lg shadow-sm">
+                </figure>
 
                 <h2 class="text-3xl text-gray-800 mt-12 mb-6">4. Memory Writing: How Agents Learn</h2>
                 <p class="mb-6">
                     Humans rarely "decide" to learn something formally. Instead, we subconsciously make a note in our memory. To mimic this to some extent Hermes has employed 5 Triggers that determine when knowledge should be stored. This triggers are explained below
                 </p>
+
+                <figure class="my-8">
+                    <img src="assets/Learning triggers.png" alt="Learning Triggers" class="w-full rounded-lg shadow-sm">
+                </figure>
 
                 <h3 class="text-2xl text-gray-800 mt-10 mb-4">Trigger 1: Direct Model Invocation</h3>
                 <p class="mb-6">
@@ -271,11 +284,18 @@ system prompt → user message → assistant response → tool result → next u
                 <p class="mb-6">
                     The early portion of the conversation, especially the system prompt, remains untouched. Hermes therefore compresses only the middle region of the dialogue.
                 </p>
+                <figure class="my-8">
+                    <img src="assets/Context Compression Logic.png" alt="Context Compression Logic" class="w-full rounded-lg shadow-sm">
+                </figure>
 
                 <h2 class="text-3xl text-gray-800 mt-12 mb-6">6. Session Search and Cross-Session Memory</h2>
                 <p class="mb-6">
                     Stored sessions are only useful if they can be retrieved. Hermes solves this through a layered retrieval pipeline built around SQLite and FTS5.
                 </p>
+
+                <figure class="my-8">
+                    <img src="assets/Session Search.png" alt="Session Search" class="w-full rounded-lg shadow-sm">
+                </figure>
 
                 <h3 class="text-2xl text-gray-800 mt-10 mb-4">6.1 Database Foundation</h3>
                 <p class="mb-6">
@@ -286,6 +306,7 @@ system prompt → user message → assistant response → tool result → next u
                 <p class="mb-6">
                     FTS5 uses a specialized query syntax. Raw user input can easily produce malformed queries. Hermes therefore runs search requests through a sanitization pipeline that preserves quoted phrases while removing unsupported characters.
                 </p>
+                
 
                 <h3 class="text-2xl text-gray-800 mt-10 mb-4">6.3 Retrieval Pipeline</h3>
                 <p class="mb-6">
@@ -341,6 +362,9 @@ system prompt → user message → assistant response → tool result → next u
                 <p class="mb-6">
                     This is still an early step. Hermes does not fully solve agent memory. The harder problems still remain unsolved, we still don't have our Jarvis but one day we might have one. And We all will be waiting for that.
                 </p>
+                <figure class="my-8">
+                    <img src="assets/final summary.png" alt="Architecture Summary" class="w-full rounded-lg shadow-sm">
+                </figure>
             </div>
 
         </article>
