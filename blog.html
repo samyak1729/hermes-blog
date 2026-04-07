@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Quarq</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+        }
+        .serif-heading {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.02em;
+        }
+        .gradient-button {
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+        }
+        .gradient-button:hover {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            transform: translateY(-1px);
+        }
+        .nav-container {
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 999px;
+        }
+        .prose h1, .prose h2, .prose h3 {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.02em;
+        }
+        .prose p {
+            color: #4a4a4a;
+            line-height: 1.8;
+        }
+        .prose a {
+            color: #1a1a1a;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .prose blockquote {
+            border-left: 2px solid #e2e8f0;
+            padding-left: 1.5rem;
+            color: #6b6b6b;
+            font-style: italic;
+        }
+        .prose code {
+            background: #f5f5f5;
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.25rem;
+            font-size: 0.875em;
+        }
+        .prose pre {
+            background: #f8f8f8;
+            padding: 1rem 1.25rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+        }
+        .prose pre code {
+            background: none;
+            padding: 0;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center">
+
+    <nav class="mt-8 px-6 py-2 nav-container flex items-center gap-12 shadow-sm fixed top-0 z-50">
+        <a href="#" class="flex items-center gap-2 font-bold text-xl">
+            <span class="text-2xl">Q</span>uarq
+        </a>
+        <div class="hidden md:flex gap-8 text-xs font-medium tracking-widest text-gray-500 uppercase">
+            <a href="#" class="hover:text-black">Blog</a>
+            <a href="#" class="hover:text-black">How it works</a>
+        </div>
+        <button class="gradient-button px-5 py-2 rounded-full text-sm font-medium">
+            Join Waitlist
+        </button>
+    </nav>
+
+    <main class="flex-1 w-full max-w-3xl mx-auto px-6 pt-32 pb-20">
+        
+        <article>
+            <header class="mb-16 text-center">
+                <div class="mb-6 px-4 py-1 border border-gray-100 bg-gray-50 rounded-full text-[10px] tracking-[0.2em] text-gray-400 uppercase font-semibold inline-block">
+                    Article
+                </div>
+                <h1 class="serif-heading text-4xl md:text-5xl lg:text-6xl text-gray-800 leading-tight mb-6">
+                    Your Blog Post Title Here
+                </h1>
+                <div class="flex items-center justify-center gap-4 text-sm text-gray-400">
+                    <time datetime="2026-04-07">April 7, 2026</time>
+                    <span>·</span>
+                    <span>5 min read</span>
+                </div>
+            </header>
+
+            <div class="prose prose-lg mx-auto">
+                <p class="text-xl text-gray-600 leading-relaxed mb-8">
+                    Start your introduction here. This is where you hook the reader and give them a reason to continue reading your article.
+                </p>
+
+                <h2 class="text-3xl text-gray-800 mt-12 mb-6">First Section Heading</h2>
+                <p class="mb-6">
+                    Your first paragraph goes here. Write something compelling that draws the reader in and addresses their pain points or interests.
+                </p>
+                <p class="mb-6">
+                    Continue with another paragraph that expands on your point. Use concrete examples and specific details to make your content more valuable.
+                </p>
+
+                <blockquote class="my-10">
+                    "Add an impactful quote or key insight here that summarizes an important point from your article."
+                </blockquote>
+
+                <h2 class="text-3xl text-gray-800 mt-12 mb-6">Second Section Heading</h2>
+                <p class="mb-6">
+                    Move into your next topic. Break down complex ideas into digestible pieces that are easy to understand.
+                </p>
+                <p class="mb-6">
+                    Include relevant examples, case studies, or data points that support your argument and add credibility to your content.
+                </p>
+
+                <h3 class="text-2xl text-gray-800 mt-10 mb-4">Subsection</h3>
+                <p class="mb-6">
+                    Sometimes you need to break things down further. Use subsections to organize your content logically and help readers navigate.
+                </p>
+
+                <h2 class="text-3xl text-gray-800 mt-12 mb-6">Conclusion</h2>
+                <p class="mb-6">
+                    Wrap up your article by summarizing the key points you've covered. Reinforce your main argument and leave the reader with something to think about.
+                </p>
+                <p>
+                    End with a call to action or next steps. What should the reader do after finishing your article?
+                </p>
+            </div>
+
+        </article>
+
+    </main>
+
+    <footer class="py-12 text-center text-sm text-gray-400">
+        <p>&copy; 2026 Quarq. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
